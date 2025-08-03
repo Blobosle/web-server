@@ -51,7 +51,7 @@ http::Server::Server(int port, const size_t accept_buf, const std::string& reply
         if (rd == EOF) {
             std::cout << "Client closed the connection\n";
         }
-        else {
+        else if (rd < 0) {
             ERROR("read() failed");
         }
 

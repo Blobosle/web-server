@@ -1,5 +1,17 @@
 #include "networking/socket.hpp"
 
-int main() {
-    http::Client client(8080, "Hello server! How you doing?");
+#include <iostream>
+
+int main(int argc, char* argv[]) {
+    int port = 8080;
+
+    if (argc < 2) {
+        std::cout << "Using Port 8080 by default\n";
+    }
+    else {
+        port = (long) argv[1];
+        std::cout << "Using Port " << port << "\n";
+    }
+
+    http::Client client(port, "Hello server! How you doing?");
 }
